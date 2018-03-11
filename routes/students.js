@@ -3,7 +3,7 @@ var express = require('express'),
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.json({[
+  res.json([
   	{
   		'id': 1,
   		'name': 'John',
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   		'phone': '87654321',
   		'favorite_subject': 'History'
   	}
-  ]});
+  ]);
 });
 
 module.exports = router;
