@@ -1,10 +1,16 @@
 import React from 'react';
 
+import { Wrapper } from './styledComponents';
 import { Header } from '../Header';
-import { Button } from '../Button';
+import { Content } from '../Content';
+import { Footer } from '../Footer';
 
 export const App = () => (
-  <div>
+  <Wrapper>
     <Header />
-  </div>
+    <Content>
+      <div>Hello World</div>
+    </Content>
+    <Footer />
+  </Wrapper>
 );
