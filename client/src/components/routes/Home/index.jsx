@@ -1,5 +1,6 @@
 import React from 'react';
+import { push } from 'react-router-redux';
 
 export const Home = () => (
-  <div>Hello World</div>
+  <div>Home</div>
 );
