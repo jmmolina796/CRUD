@@ -5,8 +5,13 @@ const baseStyles = () => injectGlobal`
   ${styledNormalize}
 
   @font-face {
-    font-family: 'Gidole';
-    src: url('/fonts/Gidole-Regular.ttf');
+    font-family: 'Loew-Heavy';
+    src: url('/fonts/Loew-Heavy.otf');
+  }
+
+  @font-face {
+    font-family: 'Loew-Medium';
+    src: url('/fonts/Loew-Medium.otf');
   }
 
   body,
@@ -16,7 +21,7 @@ const baseStyles = () => injectGlobal`
 
   body {
     background-color: rgb(247, 247, 250);
-    font-family: Gidole;
+    font-family: Loew-Medium;
     height: 100vh;
   }
 
