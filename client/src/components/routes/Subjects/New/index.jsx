@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { Modal } from '../../../';
+
 export const New = () => (
-  <div>New Subject</div>
+  <Modal header={<p>Header</p>} footer={<p>Footer</p>} close={() => alert()} >
+    <p>Body</p>
+  </Modal>
 );

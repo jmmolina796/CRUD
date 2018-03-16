@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import { subjectsActions as actions } from '../actions';
 
@@ -20,9 +21,9 @@ class CardListSubjectsContainer extends Component {
         isFetching={this.props.isFetching}
         didError={this.props.didError}
         list={this.props.list}
-        newElement={() => alert('newElement')}
-        modifyElement={() => alert('modifyElement')}
-        deleteElement={() => alert('deleteElement')}
+        newElement={() => this.props.goTo('/subjects/new')}
+        modifyElement={() => this.props.goTo('/subjects/modify')}
+        deleteElement={() => this.props.goTo('/subjects/delete')}
       />
     );
   }
@@ -36,6 +37,7 @@ const mapStateToProps = ({ subjects }) => ({
 
 const mapDispatchToProps = dispatch => ({
   requestSubjects: () => dispatch(actions.subjectsRequest()),
+  goTo: url => dispatch(push(url)),
 });
 
 const reduxConnector = connect(mapStateToProps, mapDispatchToProps);
