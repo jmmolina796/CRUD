@@ -1,7 +1,6 @@
-var express = require('express'),
+const express = require('express'),
     router = express.Router();
 
-/* GET home page. */
 router.get('/', (req, res) => {
   res.json([
   	{
@@ -24,3 +23,6 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
+
+
+/*http://choices4learning.com/home/quick-stop-resources-2/articles-on-learning/school-subjects-list/*/

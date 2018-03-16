@@ -1,8 +1,9 @@
 import React from 'react';
 import { push } from 'react-router-redux';
-import { CardList } from '../../';
+// import { CardList } from '../../';
+import CardListSubjectsContainer from '../../../containers/CardListSubjectsContainer';
 
-const list = {
+/*const list = {
   15: {
     id: 15,
     name: 'as',
@@ -30,5 +31,9 @@ const list = {
 };
 
 export const Home = () => (
-  <CardList list={list} />
+  <CardList list={list} newElement={() => alert('New User')} modifyElement={ (id) => alert(`Modify ${id}`) } deleteElement={ (id) => alert(`Delete ${id}`) } />
+);*/
+
+export const Home = () => (
+  <CardListSubjectsContainer />
 );

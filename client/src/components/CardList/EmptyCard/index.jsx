@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Wrapper } from './styledComponents';
 
-const EmptyCard = ({ newUser }) => (
-  <Wrapper onClick={newUser} />
+export const EmptyCard = ({ newElement }) => (
+  <Wrapper onClick={newElement} />
 );
 
-export default EmptyCard;
+EmptyCard.propTypes = {
+  newElement: PropTypes.func.isRequired,
+};

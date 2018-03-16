@@ -12,9 +12,9 @@ import { Tools } from './Tools';
 
 const transform = name => `${_.capitalize(_.replace(name, '_', ' '))}:`
 
-const Card = ({ data }) => (
+export const Card = ({ data, modifyElement, deleteElement }) => (
   <Wrapper>
-    <Tools />
+    <Tools modifyElement={modifyElement} deleteElement={deleteElement}  />
     <Separation>
       {
         _.map(data, (val, key) => key === 'id' ? null : <Label key={key}>{transform(key)}</Label>)
@@ -32,6 +32,6 @@ Card.propTypes = {
   data: PropTypes.shape({
     id: PropTypes.number.isRequired,
   }).isRequired,
-}
-
-export default Card;
+  modifyElement: PropTypes.func.isRequired,
+  deleteElement: PropTypes.func.isRequired,
+};

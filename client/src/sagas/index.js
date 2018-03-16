@@ -1,1 +1,1 @@
-export { fetchStudents } from './students';
+export { fetchSubjectsSaga } from './subjects';
