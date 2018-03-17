@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import Immutable from 'seamless-immutable';
+import _ from 'lodash';
 
 import {
   STUDENTS,
@@ -12,9 +13,9 @@ const initialState = Immutable({
 });
 
 const students = handleActions({
-  [STUDENTS.REQUEST]: state => state.merge(state, { isFetching: true, didError: false }),
-  [STUDENTS.SUCCESS]: (state, { payload: { list } }) => state.merge(state, { isFetching: false, didError: false, list: list }),
-  [STUDENTS.ERROR]: state => state.merge(state, { isFetching: false, didError: true }),
+  [STUDENTS.REQUEST]: state => state.merge({ isFetching: true, didError: false }),
+  [STUDENTS.SUCCESS]: (state, { payload: { list } }) => state.merge({ isFetching: false, didError: false, list: _.keyBy(list, 'id')}),
+  [STUDENTS.ERROR]: state => state.merge({ isFetching: false, didError: true }),
 }, initialState);
 
 export default students;

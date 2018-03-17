@@ -6,8 +6,7 @@ import {
   Button,
   Content,
   Header,
-  Body,
-  Footer
+  Body
 } from './styledComponents';
 
 
@@ -28,14 +27,13 @@ export class Modal extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   render() {
-    const { header, children, footer, close } = this.props;
+    const { header, children, close, message } = this.props;
     return (
-      <Wrapper onClick={close} onKeyUp={() => alert()}>
+      <Wrapper onClick={close}>
         <Button>X</Button>
-        <Content onClick={e => e.stopPropagation()}>
+        <Content onClick={e => e.stopPropagation()} message={message}>
           <Header>{header}</Header>
           <Body>{children}</Body>
-          <Footer>{footer}</Footer>
         </Content>
       </Wrapper>
     )
@@ -45,6 +43,10 @@ export class Modal extends Component {
 Modal.propTypes = {
   header: PropTypes.element.isRequired,
   children: PropTypes.element.isRequired,
-  footer: PropTypes.element.isRequired,
   close: PropTypes.func.isRequired,
+  message: PropTypes.bool,
+};
+
+Modal.defaultProps = {
+  message: false,
 };

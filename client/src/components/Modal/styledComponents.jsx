@@ -27,8 +27,9 @@ export const Content = styled.section`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  height: 60%;
-  width: 60%;
+  overflow-y: scroll;
+  min-height: ${({ message }) => message ? '245px' : '420px'};
+  min-width: 30%;
 `;
 
 export const Header = styled.header`

@@ -11,10 +11,6 @@ class CardListSubjectsContainer extends Component {
     this.props.requestSubjects();
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <CardList
@@ -22,8 +18,8 @@ class CardListSubjectsContainer extends Component {
         didError={this.props.didError}
         list={this.props.list}
         newElement={() => this.props.goTo('/subjects/new')}
-        modifyElement={() => this.props.goTo('/subjects/modify')}
-        deleteElement={() => this.props.goTo('/subjects/delete')}
+        modifyElement={id => this.props.goTo(`/subjects/update/${id}`)}
+        deleteElement={id => this.props.goTo(`/subjects/delete/${id}`)}
       />
     );
   }
