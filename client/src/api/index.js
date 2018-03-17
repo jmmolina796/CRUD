@@ -1,0 +1,1 @@
+export { fetchSubjectsApi } from './subjects';
