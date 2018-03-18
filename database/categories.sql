@@ -4,7 +4,7 @@ USE crudDB;
 
 CREATE TABLE categories (
 	id_categories INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(30)
+	name VARCHAR(30)
 );
 
 INSERT INTO categories VALUES (1, 'Fine arts');
