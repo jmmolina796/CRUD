@@ -7,6 +7,7 @@ export { CardList } from './CardList';
 export { Modal } from './Modal';
 export { SubjectsForm } from './SubjectsForm';
 export { ModalMessage } from './ModalMessage';
+export { StudentsForm } from './StudentsForm';
 
 
 window._ = _;

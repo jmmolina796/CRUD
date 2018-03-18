@@ -4,23 +4,23 @@ import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux';
 
-import { SubjectsForm } from '../components';
+import { StudentsForm } from '../components';
 import { Modal } from '../components';
-import { semestersActions, categoriesActions } from '../actions';
-import subjectsFormValidation from '../components/forms/validations/subjectsForm';
+import { semestersActions, subjectsActions } from '../actions';
+import studentsFormValidation from '../components/forms/validations/studentsForm';
 
-import { getSubject } from '../selectors/subjects';
+import { getStudent } from '../selectors/students';
 
-class SubjectsFormContainer extends Component {
+class StudentsFormContainer extends Component {
   componentDidMount() {
     this.props.requestSemesters();
-    this.props.requestCategories();
+    this.props.requestSubjects();
   }
 
   render() {
     const {
       semesters,
-      categories,
+      subjects,
       goBack,
       acceptAction,
       title,
@@ -29,9 +29,9 @@ class SubjectsFormContainer extends Component {
     } = this.props;
     return (
       <Modal header={<h3>{title}</h3>} close={goBack}>
-        <SubjectsForm
+        <StudentsForm
           semesters={semesters}
-          categories={categories}
+          subjects={subjects}
           goBack={goBack}
           acceptAction={handleSubmit(data => acceptAction(data))}
           acceptLabel={acceptLabel}
@@ -41,14 +41,14 @@ class SubjectsFormContainer extends Component {
   }
 }
 
-SubjectsFormContainer.propTypes = {
+StudentsFormContainer.propTypes = {
   semesters: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  categories: PropTypes.objectOf(
+  subjects: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
@@ -58,33 +58,33 @@ SubjectsFormContainer.propTypes = {
   acceptAction: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   acceptLabel: PropTypes.string.isRequired,
-  idSubject: PropTypes.string.isRequired,
+  idStudent: PropTypes.string.isRequired,
 };
 
-SubjectsFormContainer.defaultProps = {
-  idSubject: '0',
+StudentsFormContainer.defaultProps = {
+  idStudent: '0',
 };
 
-const mapStateToProps = (state, { idSubject }) => ({
+const mapStateToProps = (state, { idStudent }) => ({
   semesters: state.semesters.list,
-  categories: state.categories.list,
+  subjects: state.subjects.list,
   initialValues: {
-    ...getSubject(state, idSubject)
+    ...getStudent(state, idStudent)
   }
 });
 
 const mapDispatchToProps = dispatch => ({
   requestSemesters: () => dispatch(semestersActions.semestersRequest()),
-  requestCategories: () => dispatch(categoriesActions.categoriesRequest()),
-  goBack: url => dispatch(push('/subjects')),
+  requestSubjects: () => dispatch(subjectsActions.subjectsRequest()),
+  goBack: url => dispatch(push('/students')),
 });
 
 const reduxConnector = connect(mapStateToProps, mapDispatchToProps);
 
 const reduxFormConnector = reduxForm({
-  form: 'subjects',
+  form: 'students',
   enableReinitialize: true,
-  validate: subjectsFormValidation,
+  validate: studentsFormValidation,
 });
 
-export default reduxConnector(reduxFormConnector(SubjectsFormContainer));
+export default reduxConnector(reduxFormConnector(StudentsFormContainer));

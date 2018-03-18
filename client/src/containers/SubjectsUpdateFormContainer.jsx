@@ -8,7 +8,7 @@ class SubjectsUpdateFormContainer extends Component {
     return (
       <SubjectsFormContainer
         acceptAction={(data) => console.log(data)}
-        title="Update a category"
+        title="Update a subject"
         acceptLabel="Update"
         idSubject={this.props.idSubject}
       />

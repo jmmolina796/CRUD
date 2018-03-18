@@ -1,4 +1,4 @@
-const professionalsFormValidation = (el) => {
+const subjectsFormValidation = (el) => {
   const errors = {};
 
   if (!el.name) {
@@ -24,4 +24,4 @@ const professionalsFormValidation = (el) => {
   return errors;
 };
 
-export default professionalsFormValidation;
+export default subjectsFormValidation;

@@ -7,7 +7,7 @@ class SubjectsNewFormContainer extends Component {
     return (
       <SubjectsFormContainer
         acceptAction={(data) => console.log(data)}
-        title="Insert a new category"
+        title="Insert a new subject"
         acceptLabel="Add" />
     );
   }
