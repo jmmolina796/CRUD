@@ -9,3 +9,15 @@ export const fetchSubjectsApi = {
     .then(({ data }) => data)
   )
 };
+
+export const insertSubjectApi = {
+  cancel: null,
+  run: subject => (
+    axios.post('/api/subjects', {
+      subject,
+    }, {
+      cancelToken: new CancelToken(c => insertSubjectApi.cancel = c),
+    })
+      .then(({ data }) => data)
+  )
+};
