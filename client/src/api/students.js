@@ -33,3 +33,14 @@ export const updateStudentApi = {
       .then(({ data }) => data)
   )
 };
+
+export const deleteStudentApi = {
+  cancel: null,
+  run: id => (
+    axios.delete('/api/students', {
+      cancelToken: new CancelToken(c => fetchStudentsApi.cancel = c),
+      params: { id },
+    })
+    .then(({ data }) => data)
+  )
+};

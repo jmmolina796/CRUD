@@ -34,6 +34,10 @@ const students = handleActions({
   [UPDATE_STUDENT.SUCCESS]: (state, { payload: { student } }) => state.merge({ isFetchingUpdate: false, didErrorUpdate: false}).updateIn(['list', student[0].id], () => student[0]),
   [UPDATE_STUDENT.ERROR]: state => state.merge({ isFetchingUpdate: false, didErrorUpdate: true }),
 
+  [DELETE_STUDENT.REQUEST]: state => state.merge({ isFetchingDelete: true, didErrorDelete: false }),
+  [DELETE_STUDENT.SUCCESS]: (state, { payload: { id } }) => state.merge({ isFetchingDelete: false, didErrorDelete: false, list: state.list.without(id) }),
+  [DELETE_STUDENT.ERROR]: state => state.merge({ isFetchingDelete: false, didErrorDelete: true }),
+
 }, initialState);
 
 export default students;

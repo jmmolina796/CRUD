@@ -1,6 +1,6 @@
 const router = require('express').Router(),
       { response } = require('../helpers'),
-      { getStudents, insertStudent, updateStudent } = require('../queries/students');
+      { getStudents, insertStudent, updateStudent, deleteStudent } = require('../queries/students');
 
 router.get('/', (req, res) => {
   response(res, false, getStudents);
@@ -14,6 +14,11 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
   const { student, id } = req.body;
   response(res, false, updateStudent, student, id);
+});
+
+router.delete('/', (req, res) => {
+  const { id } = req.query;
+  response(res, false, deleteStudent, id);
 });
 
 module.exports = router;

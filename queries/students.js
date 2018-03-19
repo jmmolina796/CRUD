@@ -44,3 +44,11 @@ module.exports.updateStudent = async (cn, student, id) => {
   `, id);
   return data;
 };
+
+module.exports.deleteStudent = async (cn, id) => {
+  await cn.query(`
+    DELETE FROM students
+    WHERE id = ?
+  `, id);
+  return { id };
+};
