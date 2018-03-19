@@ -7,7 +7,8 @@ CREATE TABLE students (
   phone CHAR(12),
   id_semester INT NOT NULL,
   id_subject INT NOT NULL,
-  FOREIGN KEY (id_subject) REFERENCES subjects(id),
+  FOREIGN KEY (id_subject) REFERENCES subjects(id)
+    ON DELETE CASCADE,
   FOREIGN KEY (id_semester) REFERENCES semesters(id)
 );
 
