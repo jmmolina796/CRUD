@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { generate } from 'shortid';
 import _ from 'lodash';
 
 import {
@@ -17,12 +18,12 @@ export const Card = ({ data, modifyElement, deleteElement }) => (
     <Tools modifyElement={modifyElement} deleteElement={deleteElement}  />
     <Separation>
       {
-        _.map(data, (val, key) => key === 'id' ? null : <Label key={key}>{transform(key)}</Label>)
+        _.map(data, (val, key) => key === 'id' ? null : <Label key={generate()}>{transform(key)}</Label>)
       }
     </Separation>
     <Separation>
       {
-        _.map(data, (val, key) => key === 'id' ? null : <Label key={val}>{val}</Label>)
+        _.map(data, (val, key) => key === 'id' ? null : <Label key={generate()}>{val}</Label>)
       }
     </Separation>
   </Wrapper>
