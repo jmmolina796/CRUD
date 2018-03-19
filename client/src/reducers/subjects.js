@@ -34,6 +34,10 @@ const subjects = handleActions({
   [UPDATE_SUBJECT.SUCCESS]: (state, { payload: { subject } }) => state.merge({ isFetchingUpdate: false, didErrorUpdate: false}).updateIn(['list', subject[0].id], () => subject[0]),
   [UPDATE_SUBJECT.ERROR]: state => state.merge({ isFetchingUpdate: false, didErrorUpdate: true }),
 
+  [DELETE_SUBJECT.REQUEST]: state => state.merge({ isFetchingDelete: true, didErrorDelete: false }),
+  [DELETE_SUBJECT.SUCCESS]: (state, { payload: { id } }) => state.merge({ isFetchingDelete: false, didErrorDelete: false, list: state.list.without(id) }),
+  [DELETE_SUBJECT.ERROR]: state => state.merge({ isFetchingDelete: false, didErrorDelete: true }),
+
 }, initialState);
 
 export default subjects;

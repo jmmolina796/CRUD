@@ -1,2 +1,2 @@
-export { fetchSubjectsApi, insertSubjectApi, updateSubjectApi } from './subjects';
+export { fetchSubjectsApi, insertSubjectApi, updateSubjectApi, deleteSubjectApi } from './subjects';
 export { fetchStudentsApi } from './students';
