@@ -3,7 +3,8 @@ import { push } from 'react-router-redux';
 
 import {
   SUBJECTS,
-  INSERT_SUBJECT
+  INSERT_SUBJECT,
+  UPDATE_SUBJECT,
 } from '../constants';
 
 import {
@@ -12,7 +13,8 @@ import {
 
 import {
   fetchSubjectsApi,
-  insertSubjectApi
+  insertSubjectApi,
+  updateSubjectApi,
 } from '../api';
 
 // FETCH
@@ -57,5 +59,29 @@ export function* insertSubjectSaga() {
   while(true) {
     const { payload: { subject } } = yield take(INSERT_SUBJECT.REQUEST);
     yield fork(insertSubject, subject);
+  }
+}
+
+// UPDATE
+
+function* updateSubject(subject, id) {
+  try {
+    const { data, isError } = yield call(updateSubjectApi.run, subject, id);
+    if (isError) throw Error();
+    yield put(subjectsActions.updateSubjectSuccess(data));
+  } catch (e) {
+    yield put(subjectsActions.updateSubjectError());
+  } finally {
+    if(yield cancelled()) {
+      yield call(updateSubjectApi.cancel);
+    } else {
+      yield put(push('/subjects'));
+    }
+  }
+}
+export function* updateSubjectSaga() {
+  while(true) {
+    const { payload: { subject, id } } = yield take(UPDATE_SUBJECT.REQUEST);
+    yield fork(updateSubject, subject, id);
   }
 }

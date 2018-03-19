@@ -2,7 +2,9 @@ import { createActions } from 'redux-actions';
 
 import {
   SUBJECTS,
-  INSERT_SUBJECT
+  INSERT_SUBJECT,
+  UPDATE_SUBJECT,
+  DELETE_SUBJECT,
 } from '../constants';
 
 export const subjectsActions = createActions({
@@ -12,4 +14,10 @@ export const subjectsActions = createActions({
   [INSERT_SUBJECT.REQUEST]: subject => ({ subject }),
   [INSERT_SUBJECT.SUCCESS]: subject => ({ subject }),
   [INSERT_SUBJECT.ERROR]: null,
+  [UPDATE_SUBJECT.REQUEST]: (subject, id) => ({ subject, id }),
+  [UPDATE_SUBJECT.SUCCESS]: subject => ({ subject }),
+  [UPDATE_SUBJECT.ERROR]: null,
+  [DELETE_SUBJECT.REQUEST]: idSubject => ({ idSubject }),
+  [DELETE_SUBJECT.SUCCESS]: idSubject => ({ idSubject }),
+  [DELETE_SUBJECT.ERROR]: null,
 })
