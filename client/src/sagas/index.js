@@ -1,4 +1,4 @@
 export { fetchSubjectsSaga, insertSubjectSaga, updateSubjectSaga, deleteSubjectSaga } from './subjects';
-export { fetchStudentsSaga } from './students';
+export { fetchStudentsSaga, insertStudentSaga } from './students';
 export { fetchSemestersSaga } from './semesters';
 export { fetchCategoriesSaga } from './categories';

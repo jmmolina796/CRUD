@@ -9,3 +9,15 @@ export const fetchStudentsApi = {
     .then(({ data }) => data)
   )
 };
+
+export const insertStudentApi = {
+  cancel: null,
+  run: student => (
+    axios.post('/api/students', {
+      student,
+    }, {
+      cancelToken: new CancelToken(c => insertStudentApi.cancel = c),
+    })
+      .then(({ data }) => data)
+  )
+};
