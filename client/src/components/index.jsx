@@ -8,6 +8,6 @@ export { Modal } from './Modal';
 export { SubjectsForm } from './SubjectsForm';
 export { ModalMessage } from './ModalMessage';
 export { StudentsForm } from './StudentsForm';
-
+export { PrincipalMessage } from './PrincipalMessage';
 
 window._ = _;
