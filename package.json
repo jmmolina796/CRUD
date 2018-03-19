@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"yarn run server\" \"cd ./client && yarn start\" ",
-    "server": "PORT=3001 nodemon ./bin/www"
+    "server": "PORT=3001 nodemon ./bin/www",
+    "debug-server": "PORT=3001 nodemon --inspect ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

@@ -1,22 +1,9 @@
-const express = require('express'),
-    router = express.Router();
+const router = require('express').Router(),
+      { response } = require('../helpers'),
+      { getSemesters } = require('../queries/semesters');
 
 router.get('/', (req, res) => {
-  res.json({
-    data: [{
-  		'id': 1,
-  		'name': 'First',
-  	},
-  	{
-      'id': 2,
-  		'name': 'Second',
-  	},
-    {
-      'id': 3,
-  		'name': 'Third',
-  	}],
-    isError: false
-  });
+  response(res, false, getSemesters);
 });
 
 module.exports = router;

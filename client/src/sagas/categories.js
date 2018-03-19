@@ -13,6 +13,7 @@ import {
 function* fetchCategories() {
   try {
     const { data: { data, isError } } = yield call(axios,'/api/categories');
+    console.log(data);
     if (isError) throw Error();
     yield put(categoriesActions.categoriesSuccess(data));
   } catch (e) {
