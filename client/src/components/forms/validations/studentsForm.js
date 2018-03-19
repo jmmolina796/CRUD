@@ -20,11 +20,11 @@ const studentsFormValidation = (el) => {
   }
 
   if (el.id_subject === '0') {
-    errors.id_subject = 'You have to select a subject';
+    errors.id_subject = 'Subject is required';
   }
 
   if (el.id_semester === '0') {
-    errors.id_semester = 'You have to select a semester';
+    errors.id_semester = 'Semester is required';
   }
 
   return errors;

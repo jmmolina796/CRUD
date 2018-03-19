@@ -8,17 +8,17 @@ const subjectsFormValidation = (el) => {
   }
 
   if (el.id_category === '0') {
-    errors.id_category = 'You have to select a category';
+    errors.id_category = 'Category is required';
   }
 
   if (el.id_semester === '0') {
-    errors.id_semester = 'You have to select a semester';
+    errors.id_semester = 'Semester is required';
   }
 
   if(!el.credits) {
     errors.credits = 'Credits are required';
   } else if (isNaN(el.credits)) {
-    errors.credits = 'You have to insert a number';
+    errors.credits = 'Incorrect format';
   }
 
   return errors;
