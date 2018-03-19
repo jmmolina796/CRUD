@@ -17,7 +17,7 @@ export const subjectsActions = createActions({
   [UPDATE_SUBJECT.REQUEST]: (subject, id) => ({ subject, id }),
   [UPDATE_SUBJECT.SUCCESS]: subject => ({ subject }),
   [UPDATE_SUBJECT.ERROR]: null,
-  [DELETE_SUBJECT.REQUEST]: idSubject => ({ idSubject }),
-  [DELETE_SUBJECT.SUCCESS]: idSubject => ({ idSubject }),
+  [DELETE_SUBJECT.REQUEST]: id => ({ id }),
+  [DELETE_SUBJECT.SUCCESS]: id => ({ id }),
   [DELETE_SUBJECT.ERROR]: null,
 })

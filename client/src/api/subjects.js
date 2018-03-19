@@ -4,7 +4,7 @@ export const fetchSubjectsApi = {
   cancel: null,
   run: () => (
     axios.get('/api/subjects', {
-      cancelToken: new CancelToken(c => fetchSubjectsApi.cancel = c)
+      cancelToken: new CancelToken(c => fetchSubjectsApi.cancel = c),
     })
     .then(({ data }) => data)
   )
@@ -31,5 +31,16 @@ export const updateSubjectApi = {
       cancelToken: new CancelToken(c => updateSubjectApi.cancel = c),
     })
       .then(({ data }) => data)
+  )
+};
+
+export const deleteSubjectApi = {
+  cancel: null,
+  run: id => (
+    axios.delete('/api/subjects', {
+      cancelToken: new CancelToken(c => fetchSubjectsApi.cancel = c),
+      params: { id },
+    })
+    .then(({ data }) => data)
   )
 };

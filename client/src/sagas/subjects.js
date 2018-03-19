@@ -5,6 +5,7 @@ import {
   SUBJECTS,
   INSERT_SUBJECT,
   UPDATE_SUBJECT,
+  DELETE_SUBJECT,
 } from '../constants';
 
 import {
@@ -15,6 +16,7 @@ import {
   fetchSubjectsApi,
   insertSubjectApi,
   updateSubjectApi,
+  deleteSubjectApi,
 } from '../api';
 
 // FETCH
@@ -83,5 +85,29 @@ export function* updateSubjectSaga() {
   while(true) {
     const { payload: { subject, id } } = yield take(UPDATE_SUBJECT.REQUEST);
     yield fork(updateSubject, subject, id);
+  }
+}
+
+// DELETE
+
+function* deleteSubject(id) {
+  try {
+    const { data, isError } = yield call(deleteSubjectApi.run, id);
+    if (isError) throw Error();
+    yield put(subjectsActions.deleteSubjectSuccess(data.id));
+  } catch (e) {
+    yield put(subjectsActions.deleteSubjectError());
+  } finally {
+    if(yield cancelled()) {
+      yield call(deleteSubjectApi.cancel);
+    } else {
+      yield put(push('/subjects'));
+    }
+  }
+}
+export function* deleteSubjectSaga() {
+  while(true) {
+    const { payload: { id } } = yield take(DELETE_SUBJECT.REQUEST);
+    yield fork(deleteSubject, id);
   }
 }

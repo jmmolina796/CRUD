@@ -45,3 +45,11 @@ module.exports.updateSubject = async (cn, subject, id) => {
   `, id);
   return data;
 };
+
+module.exports.deleteSubject = async (cn, id) => {
+  await cn.query(`
+    DELETE FROM subjects
+    WHERE id = ?
+  `, id);
+  return { id };
+};
