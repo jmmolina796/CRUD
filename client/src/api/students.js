@@ -21,3 +21,15 @@ export const insertStudentApi = {
       .then(({ data }) => data)
   )
 };
+
+export const updateStudentApi = {
+  cancel: null,
+  run: (student, id) => (
+    axios.put('/api/students', {
+      student, id,
+    }, {
+      cancelToken: new CancelToken(c => updateStudentApi.cancel = c),
+    })
+      .then(({ data }) => data)
+  )
+};

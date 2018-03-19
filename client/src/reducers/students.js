@@ -30,6 +30,10 @@ const students = handleActions({
   [INSERT_STUDENT.SUCCESS]: (state, { payload: { student } }) => state.merge({ isFetchingInsert: false, didErrorInsert: false}).setIn(['list', student[0].id], student[0]),
   [INSERT_STUDENT.ERROR]: state => state.merge({ isFetchingInsert: false, didErrorInsert: true }),
 
+  [UPDATE_STUDENT.REQUEST]: state => state.merge({ isFetchingUpdate: true, didErrorUpdate: false }),
+  [UPDATE_STUDENT.SUCCESS]: (state, { payload: { student } }) => state.merge({ isFetchingUpdate: false, didErrorUpdate: false}).updateIn(['list', student[0].id], () => student[0]),
+  [UPDATE_STUDENT.ERROR]: state => state.merge({ isFetchingUpdate: false, didErrorUpdate: true }),
+
 }, initialState);
 
 export default students;

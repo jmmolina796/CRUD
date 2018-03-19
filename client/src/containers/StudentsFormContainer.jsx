@@ -26,6 +26,7 @@ class StudentsFormContainer extends Component {
       title,
       acceptLabel,
       handleSubmit,
+      idStudent,
     } = this.props;
     return (
       <Modal header={<h3>{title}</h3>} close={goBack}>
@@ -33,7 +34,7 @@ class StudentsFormContainer extends Component {
           semesters={semesters}
           subjects={subjects}
           goBack={goBack}
-          acceptAction={handleSubmit(data => acceptAction(data))}
+          acceptAction={handleSubmit(data => acceptAction(data, idStudent))}
           acceptLabel={acceptLabel}
         />
       </Modal>

@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 import {
   STUDENTS,
   INSERT_STUDENT,
+  UPDATE_STUDENT,
 } from '../constants';
 
 import {
@@ -13,6 +14,7 @@ import {
 import {
   fetchStudentsApi,
   insertStudentApi,
+  updateStudentApi,
 } from '../api';
 
 // FETCH
@@ -55,8 +57,31 @@ function* insertStudent(student) {
 }
 export function* insertStudentSaga() {
   while(true) {
-    debugger;
     const { payload: { student } } = yield take(INSERT_STUDENT.REQUEST);
     yield fork(insertStudent, student);
+  }
+}
+
+// UPDATE
+
+function* updateStudent(student, id) {
+  try {
+    const { data, isError } = yield call(updateStudentApi.run, student, id);
+    if (isError) throw Error();
+    yield put(studentsActions.updateStudentSuccess(data));
+  } catch (e) {
+    yield put(studentsActions.updateStudentError());
+  } finally {
+    if(yield cancelled()) {
+      yield call(updateStudentApi.cancel);
+    } else {
+      yield put(push('/students'));
+    }
+  }
+}
+export function* updateStudentSaga() {
+  while(true) {
+    const { payload: { student, id } } = yield take(UPDATE_STUDENT.REQUEST);
+    yield fork(updateStudent, student, id);
   }
 }
