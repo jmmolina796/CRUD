@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router';
 
 import { Home } from '../Home';
 import { Subjects } from '../Subjects';
-import { New as NewSubjects } from '../Subjects/New';
+import { Students } from '../Students';
 import { NotFound } from '../NotFound';
 
 export const Root = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route exact path="/subjects" component={Subjects} />
-    <Route exact path="/subjects/new" component={NewSubjects} />
+    <Route path="/subjects" component={Subjects} />
+    <Route path="/students" component={Students} />
     <Route component={NotFound} />
   </Switch>
 );

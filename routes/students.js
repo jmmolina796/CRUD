@@ -1,26 +1,9 @@
-var express = require('express'),
-    router = express.Router();
+const router = require('express').Router(),
+      { response } = require('../helpers'),
+      { getStudents } = require('../queries/students');
 
-/* GET home page. */
 router.get('/', (req, res) => {
-  res.json([
-  	{
-  		'id': 1,
-  		'name': 'John',
-  		'last_name': 'White',
-  		'semester': 'Frist',
-  		'phone': '12345678',
-  		'favorite_subject': 'Math'
-  	},
-  	{
-  		'id': 2,
-  		'name': 'Anna',
-  		'last_name': 'Parker',
-  		'semester': 'Third',
-  		'phone': '87654321',
-  		'favorite_subject': 'History'
-  	}
-  ]);
+  response(res, false, getStudents);
 });
 
 module.exports = router;

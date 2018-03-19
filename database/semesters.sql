@@ -1,7 +1,7 @@
 USE crudDB;
 
 CREATE TABLE semesters (
-	id_semester INT PRIMARY KEY AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	name VARCHAR(20)
 );
 
