@@ -1,7 +1,7 @@
 USE crudDB;
 
 CREATE TABLE subjects (
-  id_subject INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(30),
   id_category INT NOT NULL,
   id_semester INT NOT NULL,
